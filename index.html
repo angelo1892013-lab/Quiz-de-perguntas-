@@ -8,9 +8,10 @@
 
 <h1>🎮 Quiz Game</h1>
 
-<p id="question">Carrega em começar</p>
+<p id="question">Clica em começar</p>
 
 <button onclick="start()">▶ Começar</button>
+<button onclick="restart()">🔄 Reiniciar</button>
 
 <br><br>
 
@@ -69,8 +70,13 @@ function answer(op){
     document.getElementById("C").style.display = "none";
   }
 }
-</script>
 
-</body>
-</html>
-  
+function restart(){
+  score = 0;
+  i = 0;
+
+  document.getElementById("score").innerText = score;
+
+  document.getElementById("A").style.display = "inline";
+  document.getElementById("B").style.display = "inline";
+  document.getElementById("C").style.display = "inline
