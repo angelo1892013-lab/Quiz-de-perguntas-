@@ -1,62 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quiz</title>
+  <title>Quiz Game</title>
 </head>
 
 <body style="font-family: Arial; text-align:center;">
 
 <h1>🎮 Quiz Game</h1>
 
-<p id="pergunta"></p>
+<p id="question">Carrega em começar</p>
 
-<button onclick="responder('A')" id="A">A</button>
-<button onclick="responder('B')" id="B">B</button>
-<button onclick="responder('C')" id="C">C</button>
+<button onclick="start()">▶ Começar</button>
+
+<br><br>
+
+<button onclick="answer('A')" id="A">A</button>
+<button onclick="answer('B')" id="B">B</button>
+<button onclick="answer('C')" id="C">C</button>
 
 <p id="msg"></p>
-<p>🏆 Pontos: <span id="pontos">0</span></p>
+<p>🏆 Pontos: <span id="score">0</span></p>
 
 <script>
-let pontos = 0;
+let score = 0;
 let i = 0;
 
-let perguntas = [
-  {q:"2 + 2?", a:"B", op:["3","4","5"]},
+let questions = [
+  {q:"2 + 2 = ?", a:"B", op:["3","4","5"]},
   {q:"Capital de Portugal?", a:"A", op:["Lisboa","Madrid","Paris"]},
-  {q:"JavaScript é para?", a:"C", op:["Cozinhar","Desenhar","Sites"]}
+  {q:"JavaScript serve para?", a:"C", op:["Cozinhar","Desenhar","Sites"]}
 ];
 
-function mostrar(){
+function start(){
+  show();
+}
 
-  let p = perguntas[i];
+function show(){
+  let q = questions[i];
 
-  document.getElementById("pergunta").innerText = p.q;
+  document.getElementById("question").innerText = q.q;
 
-  document.getElementById("A").innerText = "A: " + p.op[0];
-  document.getElementById("B").innerText = "B: " + p.op[1];
-  document.getElementById("C").innerText = "C: " + p.op[2];
+  document.getElementById("A").innerText = "A: " + q.op[0];
+  document.getElementById("B").innerText = "B: " + q.op[1];
+  document.getElementById("C").innerText = "C: " + q.op[2];
 
   document.getElementById("msg").innerText = "";
 }
 
-function responder(op){
+function answer(op){
 
-  if(op == perguntas[i].a){
-    pontos++;
+  if(op == questions[i].a){
+    score++;
     document.getElementById("msg").innerText = "✔ Certo!";
   } else {
     document.getElementById("msg").innerText = "❌ Errado!";
   }
 
-  document.getElementById("pontos").innerText = pontos;
+  document.getElementById("score").innerText = score;
 
   i++;
 
-  if(i < perguntas.length){
-    mostrar();
+  if(i < questions.length){
+    show();
   } else {
-    document.getElementById("pergunta").innerText = "Fim do jogo 🎉";
+    document.getElementById("question").innerText = "Fim do jogo 🎉";
     document.getElementById("A").style.display = "none";
     document.getElementById("B").style.display = "none";
-    document
+    document.getElementById("C").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
+  
