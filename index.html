@@ -8,28 +8,40 @@
 
 <h1>🎮 Quiz</h1>
 
-<p id="pergunta">Clica em A, B ou C</p>
+<p id="pergunta"></p>
 
-<button onclick="responder('A')">A</button>
-<button onclick="responder('B')">B</button>
-<button onclick="responder('C')">C</button>
+<button onclick="responder('A')" id="btnA">A</button>
+<button onclick="responder('B')" id="btnB">B</button>
+<button onclick="responder('C')" id="btnC">C</button>
 
 <p id="msg"></p>
 <p>🏆 Pontos: <span id="pontos">0</span></p>
 
 <script>
 let pontos = 0;
-let index = 0;
+let i = 0;
 
 let perguntas = [
-  {q:"2+2?", a:"B"},
-  {q:"Capital de Portugal?", a:"A"},
-  {q:"JavaScript é usado para?", a:"C"}
+  {q:"2 + 2?", a:"B", op:["3","4","5"]},
+  {q:"Capital de Portugal?", a:"A", op:["Lisboa","Madrid","Paris"]},
+  {q:"JavaScript é usado para?", a:"C", op:["Cozinhar","Desenhar","Sites"]}
 ];
+
+function mostrar(){
+  let p = perguntas[i];
+
+  document.getElementById("pergunta").innerText = p.q;
+
+  document.getElementById("btnA").innerText = "A: " + p.op[0];
+  document.getElementById("btnB").innerText = "B: " + p.op[1];
+  document.getElementById("btnC").innerText = "C: " + p.op[2];
+
+  document.getElementById("msg").innerText = "";
+}
 
 function responder(opcao){
 
-  if(opcao == perguntas[index].a){
+  if(opcao == perguntas[i].a){
     pontos++;
     document.getElementById("msg").innerText = "✔ Certo!";
   } else {
@@ -38,16 +50,12 @@ function responder(opcao){
 
   document.getElementById("pontos").innerText = pontos;
 
-  index++;
+  i++;
 
-  if(index < perguntas.length){
-    document.getElementById("pergunta").innerText = perguntas[index].q;
+  if(i < perguntas.length){
+    mostrar();
   } else {
     document.getElementById("pergunta").innerText = "Fim do jogo 🎉";
-  }
-}
-</script>
+    document.getElementById("btnA").style.display = "none";
+    document.getElementById("btn
 
-</body>
-</html>
-``
