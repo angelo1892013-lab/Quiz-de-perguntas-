@@ -6,9 +6,59 @@
 
 <body style="font-family: Arial; text-align:center;">
 
-<h1>🎮 Quiz Simples</h1>
+<h1>🎮 Quiz</h1>
 
-<p id="pergunta">Carrega em começar</p>
+<p id="question">Carrega em começar</p>
 
-<button onclick="responder('A')" id="a">A</button>
-<button
+<button onclick="start()">▶ Começar</button>
+
+<br><br>
+
+<button onclick="answer('A')">A</button>
+<button onclick="answer('B')">B</button>
+<button onclick="answer('C')">C</button>
+
+<p id="msg"></p>
+<p>🏆 Pontos: <span id="score">0</span></p>
+
+<script>
+let score = 0;
+let i = 0;
+
+let questions = [
+  {q:"2 + 2 = ?", a:"B", options:["A:3","B:4","C:5"]},
+  {q:"Capital de Portugal?", a:"A", options:["A:Lisboa","B:Madrid","C:Paris"]},
+  {q:"Qual é linguagem de sites?", a:"C", options:["A:Python","B:C++","C:JavaScript"]}
+];
+
+function start(){
+  show();
+}
+
+function show(){
+  document.getElementById("question").innerText = questions[i].q;
+  document.getElementById("msg").innerText = "";
+}
+
+function answer(x){
+  if(x == questions[i].a){
+    score++;
+    document.getElementById("msg").innerText = "✔ Certo!";
+  } else {
+    document.getElementById("msg").innerText = "❌ Errado!";
+  }
+
+  document.getElementById("score").innerText = score;
+
+  i++;
+
+  if(i < questions.length){
+    setTimeout(show, 800);
+  } else {
+    document.getElementById("question").innerText = "Fim do jogo 🎉";
+  }
+}
+</script>
+
+</body>
+</html>
