@@ -8,7 +8,7 @@
 
 <h1>🎮 Quiz Game</h1>
 
-<p id="question">Clica em começar</p>
+<p id="question">Carrega em começar</p>
 
 <button onclick="start()">▶ Começar</button>
 <button onclick="restart()">🔄 Reiniciar</button>
@@ -52,31 +52,4 @@ function answer(op){
 
   if(op == questions[i].a){
     score++;
-    document.getElementById("msg").innerText = "✔ Certo!";
-  } else {
-    document.getElementById("msg").innerText = "❌ Errado!";
-  }
-
-  document.getElementById("score").innerText = score;
-
-  i++;
-
-  if(i < questions.length){
-    show();
-  } else {
-    document.getElementById("question").innerText = "Fim do jogo 🎉";
-    document.getElementById("A").style.display = "none";
-    document.getElementById("B").style.display = "none";
-    document.getElementById("C").style.display = "none";
-  }
-}
-
-function restart(){
-  score = 0;
-  i = 0;
-
-  document.getElementById("score").innerText = score;
-
-  document.getElementById("A").style.display = "inline";
-  document.getElementById("B").style.display = "inline";
-  document.getElementById("C").style.display = "inline
+    document
