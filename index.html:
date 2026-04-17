@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎮 Quiz</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f2f2f2;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🎮 Quiz Game</h1>
+
+<p id="pergunta">Carrega em começar</p>
+
+<button onclick="responder('A')">A</button>
+<button onclick="responder('B')">B</button>
+<button onclick="responder('C')">C</button>
+
+<br><br>
+
+<button onclick="proxima()">▶ Próxima pergunta</button>
+
+<p id="msg"></p>
+
+<p>🏆 Pontos: <span id="pontos">0</span></p>
+
+</div>
+
+<script>
+let pontos = 0;
+let atual = 0;
+
+let perguntas = [
+  {
+    pergunta: "Quanto é 2 + 2?",
+    correta: "B",
+    opcoes: ["A: 3", "B: 4", "C: 5"]
+  },
+  {
+    pergunta: "Qual é a capital de Portugal?",
+    correta: "A",
+    opcoes: ["A: Lisboa", "B: Madrid", "C: Paris"]
+  },
+  {
+    pergunta: "Qual linguagem usamos para sites?",
+    correta: "C",
+    opcoes: ["A: Python", "B: C++", "C: JavaScript"]
+  },
+  {
+    pergunta: "Qual linguagem mais usada ?",
+    correta"b"
+    opcoes["A:portugues","B:Ingles","C:Hindi"]
+    },
+  
+function mostrar() {
+  let p = perguntas[atual];
+
+  document.getElementById("pergunta").innerText = p.pergunta;
+
+  document.getElementById("msg").innerText = "";
+
+  document.querySelector("button:nth-child(2)").innerText = p.opcoes[0];
+  document.querySelector("button:nth-child(3)").innerText = p.opcoes[1];
+  document.querySelector("button:nth-child(4)").innerText = p.opcoes[2];
+}
+
+function responder(opcao) {
+  let p = perguntas[atual];
+
+  if (opcao == p.correta) {
+    pontos++;
+    document.getElementById("msg").innerText = "✔ Certo!";
+  } else {
+    document.getElementById("msg").innerText = "❌ Errado!";
+  }
+
+  document.getElementById("pontos").innerText = pontos;
+}
+
+function proxima() {
+  atual++;
+
+  if (atual >= perguntas.length) {
+    document.getElementById("pergunta").innerText = "Fim do jogo!";
+    return;
+  }
+
+  mostrar();
+}
+
+mostrar();
+</script>
+
+</body>
+</html>
