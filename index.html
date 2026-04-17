@@ -1,39 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quiz Game</title>
+  <title>Quiz Simples</title>
 </head>
 
 <body style="font-family: Arial; text-align:center;">
 
-<h1>🎮 Quiz Game</h1>
+<h1>🎮 Quiz Simples</h1>
 
-<p id="question">Carrega em começar</p>
+<p id="pergunta">Carrega em começar</p>
 
-<button onclick="answer('A')" id="a">A</button>
-<button onclick="answer('B')" id="b">B</button>
-<button onclick="answer('C')" id="c">C</button>
-
-<br><br>
-
-<button onclick="next()">▶ Próxima</button>
-
-<p id="msg"></p>
-<p>🏆 Pontos: <span id="score">0</span></p>
-
-<script>
-let score = 0;
-let i = 0;
-
-let questions = [
-  {q:"2+2?", a:"B", options:["A:3","B:4","C:5"]},
-  {q:"Capital de Portugal?", a:"A", options:["A:Lisboa","B:Madrid","C:Paris"]},
-  {q:"Linguagem de sites?", a:"C", options:["A:Python","B:C++","C:JavaScript"]}
-];
-
-function show(){
-  let q = questions[i];
-
-  document.getElementById("question").innerText = q.q;
-
-  document
+<button onclick="responder('A')" id="a">A</button>
+<button
