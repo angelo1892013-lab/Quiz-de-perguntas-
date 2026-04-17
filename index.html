@@ -1,28 +1,35 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quiz</title>
+  <title>Quiz Fix</title>
 </head>
 
 <body style="font-family: Arial; text-align:center;">
 
-<h1>🎮 Quiz Simples</h1>
+<h1>🎮 Quiz</h1>
 
-<p id="pergunta">Quanto é 2 + 2?</p>
+<p id="pergunta">Clica em A, B ou C</p>
 
-<button onclick="responder(3)">A: 3</button>
-<button onclick="responder(4)">B: 4</button>
-<button onclick="responder(5)">C: 5</button>
+<button onclick="responder('A')">A</button>
+<button onclick="responder('B')">B</button>
+<button onclick="responder('C')">C</button>
 
 <p id="msg"></p>
 <p>🏆 Pontos: <span id="pontos">0</span></p>
 
 <script>
 let pontos = 0;
+let index = 0;
 
-function responder(resposta){
-  if(resposta == 4){
+let perguntas = [
+  {q:"2+2?", a:"B"},
+  {q:"Capital de Portugal?", a:"A"},
+  {q:"JavaScript é usado para?", a:"C"}
+];
+
+function responder(opcao){
+
+  if(opcao == perguntas[index].a){
     pontos++;
     document.getElementById("msg").innerText = "✔ Certo!";
   } else {
@@ -30,8 +37,17 @@ function responder(resposta){
   }
 
   document.getElementById("pontos").innerText = pontos;
+
+  index++;
+
+  if(index < perguntas.length){
+    document.getElementById("pergunta").innerText = perguntas[index].q;
+  } else {
+    document.getElementById("pergunta").innerText = "Fim do jogo 🎉";
+  }
 }
 </script>
 
 </body>
 </html>
+``
