@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quiz Fix</title>
+  <title>Quiz</title>
 </head>
 
 <body style="font-family: Arial; text-align:center;">
 
-<h1>🎮 Quiz</h1>
+<h1>🎮 Quiz Game</h1>
 
 <p id="pergunta"></p>
 
-<button onclick="responder('A')" id="btnA">A</button>
-<button onclick="responder('B')" id="btnB">B</button>
-<button onclick="responder('C')" id="btnC">C</button>
+<button onclick="responder('A')" id="A">A</button>
+<button onclick="responder('B')" id="B">B</button>
+<button onclick="responder('C')" id="C">C</button>
 
 <p id="msg"></p>
 <p>🏆 Pontos: <span id="pontos">0</span></p>
@@ -24,24 +24,25 @@ let i = 0;
 let perguntas = [
   {q:"2 + 2?", a:"B", op:["3","4","5"]},
   {q:"Capital de Portugal?", a:"A", op:["Lisboa","Madrid","Paris"]},
-  {q:"JavaScript é usado para?", a:"C", op:["Cozinhar","Desenhar","Sites"]}
+  {q:"JavaScript é para?", a:"C", op:["Cozinhar","Desenhar","Sites"]}
 ];
 
 function mostrar(){
+
   let p = perguntas[i];
 
   document.getElementById("pergunta").innerText = p.q;
 
-  document.getElementById("btnA").innerText = "A: " + p.op[0];
-  document.getElementById("btnB").innerText = "B: " + p.op[1];
-  document.getElementById("btnC").innerText = "C: " + p.op[2];
+  document.getElementById("A").innerText = "A: " + p.op[0];
+  document.getElementById("B").innerText = "B: " + p.op[1];
+  document.getElementById("C").innerText = "C: " + p.op[2];
 
   document.getElementById("msg").innerText = "";
 }
 
-function responder(opcao){
+function responder(op){
 
-  if(opcao == perguntas[i].a){
+  if(op == perguntas[i].a){
     pontos++;
     document.getElementById("msg").innerText = "✔ Certo!";
   } else {
@@ -56,6 +57,6 @@ function responder(opcao){
     mostrar();
   } else {
     document.getElementById("pergunta").innerText = "Fim do jogo 🎉";
-    document.getElementById("btnA").style.display = "none";
-    document.getElementById("btn
-
+    document.getElementById("A").style.display = "none";
+    document.getElementById("B").style.display = "none";
+    document
